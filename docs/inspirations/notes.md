@@ -39,6 +39,8 @@ Ces images ne sont **pas** des captures des sites cités : ce sont des sections 
 
 | Fichier | Section de la page | À reprendre |
 |---|---|---|
+| `sections/hero-framer.png` | Hero (section 2) | Tout centré : badge d'annonce en pilule, titre géant serré avec la fin en dégradé doré, sous-titre, 2 boutons, 3 réassurances cochées, puis grand visuel produit en perspective (tableau de bord dans une fenêtre de navigateur) avec un téléphone qui déborde à droite et affiche des notifications |
+| `sections/pricing-notion.png` | Tarifs (section 11) | Sobre et blanc : 3 colonnes dans un même cadre (Essai gratuit, Essentiel, Pro recommandé sur fond doré très clair), icône par offre, prix barré, bouton pleine largeur, liste « Inclus », puis tableau comparatif par catégorie |
 | `sections/solution-descript.png` | Ta solution (section 5) | Rangées alternées texte / visuel produit, numéro + étiquette au-dessus du titre, visuels sur fonds pastel dégradés avec une carte d'interface (devis, calendrier, paiements) |
 | `sections/faq-whoop.png` | FAQ (section 13) | Mise en page de Whoop sur **fond clair** : titre géant en majuscules sur 2 couleurs (noir et doré) à gauche avec le lien WhatsApp, accordéon façon Cal.com à droite (carte blanche bordée, séparateurs fins, icônes rondes, question ouverte en doré) |
 | `sections/cta-linear.png` | CTA final (section 15) | Fond très sombre, halo doré en haut, grille discrète, titre centré en dégradé blanc → beige, bouton doré + bouton secondaire translucide |
@@ -46,6 +48,8 @@ Ces images ne sont **pas** des captures des sites cités : ce sont des sections 
 | `sections/footer-tally.png` | Pied de page (section 16) | Logo + phrase + « Fait avec ♥ à Cotonou » à gauche, 4 colonnes de liens, ligne du bas avec copyright et icônes sociales |
 | `composants/accordion-cal.png` | Composant accordéon (FAQ) | Conteneur blanc bordé et arrondi, séparateurs fins, chevron qui pivote, question ouverte sur fond légèrement grisé |
 | `composants/button-cal.png` | Tous les boutons | Variantes : principal doré, sombre, secondaire bordé, discret, avec icône ; 3 tailles ; états survol et désactivé |
+
+Le hero façon Framer remplace `02-hero.png` (choisir l'un des deux). Les chiffres du tableau de bord et les noms de familles sont des exemples fictifs de démonstration. La colonne « Essai » des tarifs reprend l'essai gratuit de 30 jours du brief ; les prix restent à valider.
 
 **Seul le CTA final a un fond sombre** : toutes les autres sections restent claires, pour que l'appel final ressorte.
 
