@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Lokafête — sections et composants de style</title>
+<style>
+  :root { --gold: #c1a26a; --gold-d: #a6874f; --ink: #1a1a1a; --muted: #6b6457; --bg: #faf8f3; --line: #e6dfcf; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, "Helvetica Neue", Arial, sans-serif; background: #ddd; color: var(--ink); line-height: 1.5; }
+  .block { width: 1280px; margin: 0 auto 40px; }
+  h2 { letter-spacing: -0.02em; line-height: 1.1; }
+
+  /* ---------- solution-descript : rangées alternées texte / visuel produit ---------- */
+  #solution-descript { background: #fff; padding: 96px 96px; }
+  #solution-descript .head { text-align: center; margin-bottom: 72px; }
+  #solution-descript .head h2 { font-size: 46px; }
+  #solution-descript .head p { color: var(--muted); font-size: 19px; margin-top: 12px; }
+  .row { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: center; margin-bottom: 88px; }
+  .row:last-child { margin-bottom: 0; }
+  .row.rev .txt { order: 2; }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; color: var(--gold-d); margin-bottom: 14px; }
+  .kicker b { width: 26px; height: 26px; border-radius: 8px; background: var(--gold); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; }
+  .txt h3 { font-size: 34px; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 14px; }
+  .txt p { color: var(--muted); font-size: 18px; margin-bottom: 18px; }
+  .txt ul { list-style: none; display: grid; gap: 8px; font-weight: 600; }
+  .txt li::before { content: "✓"; color: var(--gold-d); margin-right: 10px; font-weight: 800; }
+  .visual { border-radius: 24px; padding: 36px; min-height: 360px; display: flex; align-items: center; justify-content: center; }
+  .v1 { background: linear-gradient(135deg, #f6eedc, #efe2c3); }
+  .v2 { background: linear-gradient(135deg, #e7f1ea, #d3e8da); }
+  .v3 { background: linear-gradient(135deg, #f7e6e1, #efd6cf); }
+  .ui { background: #fff; border-radius: 16px; box-shadow: 0 24px 50px rgba(60,45,20,.16); width: 100%; padding: 22px; font-size: 14px; }
+  .ui .bar { display: flex; gap: 6px; margin-bottom: 16px; } .ui .bar i { width: 10px; height: 10px; border-radius: 50%; background: #e2dccd; }
+  .ui table { width: 100%; border-collapse: collapse; }
+  .ui td { padding: 9px 4px; border-bottom: 1px solid #f0ebdf; }
+  .ui td:last-child { text-align: right; font-weight: 600; }
+  .ui .tot td { border: none; font-size: 16px; font-weight: 800; padding-top: 14px; }
+  .ui .send { margin-top: 14px; background: #25d366; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; font-size: 12px; }
+  .cal span { padding: 10px 0; border-radius: 8px; background: #f7f4ec; }
+  .cal span.bk { background: var(--gold); font-weight: 700; } .cal span.x { background: #f3d9d3; color: #8a3b2e; font-weight: 700; }
+  .cal .h { background: none; color: var(--muted); font-weight: 600; }
+  .alert { margin-top: 14px; background: #fdf1ee; color: #8a3b2e; border-radius: 10px; padding: 10px 12px; font-weight: 600; font-size: 13px; }
+  .pay { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0ebdf; }
+  .pay small { display: block; color: var(--muted); }
+  .st { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+  .ok { background: #e3f1e6; color: #24603a; } .wait { background: #fff4d6; color: #8a6a1c; }
+
+  /* ---------- faq-whoop : fond noir, titre massif, liste à filets ---------- */
+  #faq-whoop { background: #0b0b0b; color: #fff; padding: 110px 96px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
+  #faq-whoop h2 { font-size: 88px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; line-height: .95; }
+  #faq-whoop h2 span { color: var(--gold); }
+  #faq-whoop .side p { color: #9a9a9a; margin-top: 22px; font-size: 17px; max-width: 320px; }
+  #faq-whoop .side a { display: inline-block; margin-top: 26px; color: #fff; font-weight: 700; border-bottom: 2px solid var(--gold); padding-bottom: 4px; }
+  .wq { border-top: 1px solid #2a2a2a; padding: 26px 0; }
+  .wq:last-child { border-bottom: 1px solid #2a2a2a; }
+  .wq .t { display: flex; justify-content: space-between; align-items: center; font-size: 19px; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; }
+  .wq .t i { font-style: normal; width: 34px; height: 34px; border: 1.5px solid #3a3a3a; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 20px; color: var(--gold); }
+  .wq.open .t i { background: var(--gold); color: #0b0b0b; border-color: var(--gold); }
+  .wq p { color: #a8a8a8; font-size: 17px; margin-top: 14px; max-width: 600px; }
+
+  /* ---------- cta-linear : sombre, halo, titre centré en dégradé ---------- */
+  #cta-linear { background: #08090a; padding: 140px 96px; text-align: center; position: relative; overflow: hidden; }
+  #cta-linear::before { content: ""; position: absolute; left: 50%; top: -220px; transform: translateX(-50%); width: 900px; height: 520px; background: radial-gradient(closest-side, rgba(193,162,106,.38), transparent); }
+  #cta-linear::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); }
+  #cta-linear > * { position: relative; z-index: 1; }
+  #cta-linear h2 { font-size: 64px; font-weight: 700; background: linear-gradient(180deg, #fff 30%, #c9bfa9); -webkit-background-clip: text; background-clip: text; color: transparent; max-width: 860px; margin: 0 auto; }
+  #cta-linear p { color: #8b8d93; font-size: 19px; margin: 20px auto 40px; max-width: 560px; }
+  .lin-btns { display: flex; gap: 12px; justify-content: center; }
+  .lb { padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px; }
+  .lb.p { background: var(--gold); color: var(--ink); box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset, 0 10px 30px rgba(193,162,106,.35); }
+  .lb.s { background: rgba(255,255,255,.06); color: #e6e6e6; border: 1px solid rgba(255,255,255,.12); }
+
+  /* ---------- wall-of-love : mosaïque de cartes façon réseaux sociaux ---------- */
+  #wall-of-love { background: var(--bg); padding: 96px 96px; }
+  #wall-of-love .head { text-align: center; margin-bottom: 52px; }
+  #wall-of-love .head .tag { display: inline-flex; gap: 6px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 14px; margin-bottom: 16px; }
+  #wall-of-love .head h2 { font-size: 46px; }
+  #wall-of-love .head p { color: var(--muted); font-size: 18px; margin-top: 10px; }
+  .masonry { columns: 3; column-gap: 20px; }
+  .tw { break-inside: avoid; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
+  .tw .top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .tw .av { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #e3d3b1, #a6874f); flex: none; }
+  .tw .top b { display: block; font-size: 15px; } .tw .top small { color: var(--muted); }
+  .tw .src { margin-left: auto; font-size: 12px; font-weight: 700; color: #fff; padding: 3px 8px; border-radius: 6px; }
+  .wa { background: #25d366; } .fb { background: #1877f2; } .ig { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af); }
+  .tw p { font-size: 16px; color: #3b372f; }
+  .tw .ph { height: 170px; border-radius: 12px; background: #efe8d8; margin-top: 14px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 13px; }
+  .stars { color: var(--gold); letter-spacing: 2px; margin-bottom: 8px; }
+
+  /* ---------- footer-tally : clair, ludique, colonnes de liens ---------- */
+  #footer-tally { background: #fff; padding: 72px 96px 40px; border-top: 1px solid #eee; }
+  .ft-top { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 40px; }
+  .ft-brand .logo { font-weight: 800; font-size: 24px; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .ft-brand .logo span { width: 34px; height: 34px; border-radius: 10px; background: var(--gold); display: inline-flex; align-items: center; justify-content: center; }
+  .ft-brand p { color: var(--muted); font-size: 15px; max-width: 280px; }
+  .ft-brand .made { margin-top: 18px; font-size: 14px; color: var(--muted); }
+  .ft-col h4 { font-size: 14px; margin-bottom: 14px; }
+  .ft-col a { display: block; color: var(--muted); font-size: 15px; margin-bottom: 10px; }
+  .ft-bottom { margin-top: 56px; padding-top: 24px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 14px; }
+  .soc { display: flex; gap: 10px; } .soc span { width: 36px; height: 36px; border-radius: 10px; background: #f5f2ea; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; color: var(--ink); }
+
+  /* ---------- accordion-cal : conteneur bordé, séparateurs, chevron ---------- */
+  #accordion-cal { background: #f4f4f5; padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  #accordion-cal .lbl { font-size: 13px; font-weight: 600; color: #71717a; margin-bottom: 12px; }
+  .acc { background: #fff; border: 1px solid #e4e4e7; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .ai { border-bottom: 1px solid #e4e4e7; padding: 20px 22px; }
+  .ai:last-child { border-bottom: none; }
+  .ai .t { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 16px; color: #111; }
+  .ai .t i { font-style: normal; color: #71717a; font-size: 14px; transition: transform .2s; }
+  .ai.open { background: #fafafa; }
+  .ai.open .t i { transform: rotate(180deg); }
+  .ai p { margin-top: 10px; color: #52525b; font-size: 15px; }
+
+  /* ---------- button-cal : variantes de boutons ---------- */
+  #button-cal { background: #fff; padding: 64px; }
+  #button-cal .grid { display: grid; grid-template-columns: 200px 1fr; row-gap: 30px; align-items: center; }
+  #button-cal .lbl { font-size: 14px; font-weight: 600; color: #71717a; }
+  .bt-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .b { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; border-radius: 10px; padding: 11px 18px; border: 1px solid transparent; }
+  .b.primary { background: #111; color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.15) inset, 0 2px 6px rgba(0,0,0,.18); }
+  .b.gold { background: var(--gold); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 4px 14px rgba(166,135,79,.3); }
+  .b.secondary { background: #fff; color: #111; border-color: #e4e4e7; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+  .b.ghost { background: transparent; color: #111; }
+  .b.sm { padding: 7px 12px; font-size: 13px; border-radius: 8px; }
+  .b.lg { padding: 15px 24px; font-size: 17px; border-radius: 12px; }
+  .b.hover.primary { background: #2a2a2a; } .b.hover.gold { background: var(--gold-d); }
+  .b.disabled { opacity: .45; }
+  .b .ic { width: 18px; height: 18px; border-radius: 5px; background: rgba(255,255,255,.25); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; }
+  .b.secondary .ic { background: #f4f4f5; } .b.gold .ic { background: rgba(0,0,0,.08); }
+</style>
+</head>
+<body>
+
+<!-- SECTION : solution (style Descript) -->
+<div class="block" id="solution-descript">
+  <div class="head"><h2>Tout votre événementiel, au même endroit</h2><p>Trois étapes pour passer du cahier à votre téléphone.</p></div>
+  <div class="row">
+    <div class="txt"><span class="kicker"><b>1</b>Devis</span><h3>Un devis professionnel en 2 minutes</h3><p>Choisissez vos prestations et votre matériel dans votre catalogue. Le total se calcule tout seul.</p><ul><li>PDF à votre nom</li><li>Envoi direct sur WhatsApp</li></ul></div>
+    <div class="visual v1"><div class="ui"><div class="bar"><i></i><i></i><i></i></div>
+      <b style="font-size:16px">Devis — Mariage famille A.</b><div style="color:var(--muted);margin-bottom:10px">Samedi 11 octobre · Cotonou</div>
+      <table><tr><td>Décoration blanc et or</td><td>250 000 F</td></tr><tr><td>200 chaises housse blanche</td><td>60 000 F</td></tr><tr><td>4 bâches 10×10</td><td>80 000 F</td></tr><tr class="tot"><td>Total</td><td>390 000 F</td></tr></table>
+      <div class="send">Envoyer sur WhatsApp</div></div></div>
+  </div>
+  <div class="row rev">
+    <div class="txt"><span class="kicker"><b>2</b>Planning</span><h3>Plus jamais deux clients le même jour</h3><p>Lokafête vérifie vos disponibilités avant chaque réservation et vous prévient en cas de conflit.</p><ul><li>Vue du mois en un coup d'œil</li><li>Matériel disponible par date</li></ul></div>
+    <div class="visual v2"><div class="ui"><div class="bar"><i></i><i></i><i></i></div>
+      <b style="font-size:16px">Octobre</b><div style="height:10px"></div>
+      <div class="cal"><span class="h">L</span><span class="h">M</span><span class="h">M</span><span class="h">J</span><span class="h">V</span><span class="h">S</span><span class="h">D</span>
+      <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span class="bk">11</span><span class="bk">12</span>
+      <span>13</span><span>14</span><span>15</span><span>16</span><span class="bk">17</span><span class="x">18</span><span>19</span></div>
+      <div class="alert">⚠ Samedi 18 : les 4 bâches sont déjà réservées</div></div></div>
+  </div>
+  <div class="row">
+    <div class="txt"><span class="kicker"><b>3</b>Paiements</span><h3>L'avance et le solde arrivent par MoMo</h3><p>Envoyez un lien de paiement. Les rappels partent tout seuls sur WhatsApp avant et après la cérémonie.</p><ul><li>MTN MoMo et Moov Money</li><li>Espèces notées aussi</li></ul></div>
+    <div class="visual v3"><div class="ui"><div class="bar"><i></i><i></i><i></i></div>
+      <b style="font-size:16px">Paiements</b>
+      <div class="pay"><div>Avance — famille A.<small>MTN MoMo · 9 oct.</small></div><span class="st ok">150 000 F reçus</span></div>
+      <div class="pay"><div>Solde — famille K.<small>Rappel envoyé hier</small></div><span class="st wait">En attente</span></div>
+      <div class="pay" style="border:none"><div>Caution — famille D.<small>Moov Money · 7 oct.</small></div><span class="st ok">50 000 F reçus</span></div></div></div>
+  </div>
+</div>
+
+<!-- SECTION : FAQ (style Whoop) -->
+<div class="block" id="faq-whoop">
+  <div class="side"><h2>Questions<br><span>fréquentes</span></h2><p>Tout ce que vous devez savoir avant de commencer.</p><a>Écrivez-nous sur WhatsApp →</a></div>
+  <div>
+    <div class="wq open"><div class="t">Ça marche sur un Android simple ?<i>–</i></div><p>Oui. Lokafête est léger et fonctionne même avec une connexion lente. Aucun ordinateur n'est nécessaire.</p></div>
+    <div class="wq"><div class="t">Je fais plusieurs métiers à la fois<i>+</i></div></div>
+    <div class="wq"><div class="t">Comment mes clients paient par MoMo ?<i>+</i></div></div>
+    <div class="wq"><div class="t">Puis-je ajouter mon équipe ?<i>+</i></div></div>
+    <div class="wq"><div class="t">Puis-je essayer avant de payer ?<i>+</i></div></div>
+  </div>
+</div>
+
+<!-- SECTION : CTA final (style Linear) -->
+<div class="block" id="cta-linear">
+  <h2>Votre prochaine cérémonie mérite mieux qu'un cahier</h2>
+  <p>Essayez Lokafête gratuitement pendant 30 jours. Sans engagement.</p>
+  <div class="lin-btns"><span class="lb p">Essayer gratuitement</span><span class="lb s">Parler sur WhatsApp →</span></div>
+</div>
+
+<!-- SECTION : Mur de l'Amour -->
+<div class="block" id="wall-of-love">
+  <div class="head"><span class="tag">♥ Mur de l'Amour</span><h2>Ils organisent leurs cérémonies avec Lokafête</h2><p>Les retours de nos clients pilotes.</p></div>
+  <div class="masonry">
+    <div class="tw"><div class="top"><span class="av"></span><div><b>[Prénom N.]</b><small>Décoratrice · Cotonou</small></div><span class="src wa">WhatsApp</span></div><div class="stars">★★★★★</div><p>« [Témoignage à recueillir] »</p><div class="ph">[Photo d'une décoration réalisée]</div></div>
+    <div class="tw"><div class="top"><span class="av"></span><div><b>[Prénom N.]</b><small>Loueur · Abomey-Calavi</small></div><span class="src fb">Facebook</span></div><p>« [Témoignage à recueillir] »</p></div>
+    <div class="tw"><div class="top"><span class="av"></span><div><b>[Prénom N.]</b><small>Traiteur · Porto-Novo</small></div><span class="src ig">Instagram</span></div><div class="stars">★★★★★</div><p>« [Témoignage à recueillir, un peu plus long pour montrer des cartes de hauteurs différentes dans la mosaïque] »</p></div>
+    <div class="tw"><div class="top"><span class="av"></span><div><b>[Prénom N.]</b><small>Organisatrice · Cotonou</small></div><span class="src wa">WhatsApp</span></div><p>« [Témoignage à recueillir] »</p><div class="ph">[Photo d'une installation]</div></div>
+    <div class="tw"><div class="top"><span class="av"></span><div><b>[Prénom N.]</b><small>Sonorisation · Ouidah</small></div><span class="src fb">Facebook</span></div><p>« [Témoignage à recueillir] »</p></div>
+    <div class="tw"><div class="top"><span class="av"></span><div><b>[Prénom N.]</b><small>Photographe · Cotonou</small></div><span class="src ig">Instagram</span></div><div class="stars">★★★★★</div><p>« [Témoignage à recueillir] »</p></div>
+  </div>
+</div>
+
+<!-- SECTION : pied de page (style Tally) -->
+<div class="block" id="footer-tally">
+  <div class="ft-top">
+    <div class="ft-brand"><div class="logo"><span>✦</span>Lokafête</div><p>L'outil de gestion des prestataires de cérémonies au Bénin.</p><div class="made">Fait avec ♥ à Cotonou</div></div>
+    <div class="ft-col"><h4>Produit</h4><a>Fonctionnalités</a><a>Tarifs</a><a>Démo</a><a>Nouveautés</a></div>
+    <div class="ft-col"><h4>Métiers</h4><a>Décorateurs</a><a>Loueurs</a><a>Traiteurs</a><a>Organisateurs</a></div>
+    <div class="ft-col"><h4>Aide</h4><a>FAQ</a><a>Support WhatsApp</a><a>Guides</a></div>
+    <div class="ft-col"><h4>Légal</h4><a>Mentions légales</a><a>Confidentialité</a><a>Conditions</a></div>
+  </div>
+  <div class="ft-bottom"><span>© 2026 Lokafête. Tous droits réservés.</span><div class="soc"><span>f</span><span>◎</span><span>♪</span><span>W</span></div></div>
+</div>
+
+<!-- COMPOSANT : accordéon (style Cal.com) -->
+<div class="block" id="accordion-cal">
+  <div><div class="lbl">Fermé</div><div class="acc">
+    <div class="ai"><div class="t">Est-ce que ça marche sur un Android simple ?<i>⌄</i></div></div>
+    <div class="ai"><div class="t">Comment mes clients paient-ils par MoMo ?<i>⌄</i></div></div>
+    <div class="ai"><div class="t">Puis-je ajouter mon équipe ?<i>⌄</i></div></div>
+    <div class="ai"><div class="t">Puis-je arrêter quand je veux ?<i>⌄</i></div></div>
+  </div></div>
+  <div><div class="lbl">Une question ouverte</div><div class="acc">
+    <div class="ai open"><div class="t">Est-ce que ça marche sur un Android simple ?<i>⌄</i></div><p>Oui. Lokafête est léger et fonctionne même avec une connexion lente.</p></div>
+    <div class="ai"><div class="t">Comment mes clients paient-ils par MoMo ?<i>⌄</i></div></div>
+    <div class="ai"><div class="t">Puis-je ajouter mon équipe ?<i>⌄</i></div></div>
+    <div class="ai"><div class="t">Puis-je arrêter quand je veux ?<i>⌄</i></div></div>
+  </div></div>
+</div>
+
+<!-- COMPOSANT : boutons (style Cal.com) -->
+<div class="block" id="button-cal">
+  <div class="grid">
+    <div class="lbl">Principal (doré)</div><div class="bt-row"><span class="b gold sm">Essai gratuit</span><span class="b gold">Essayer gratuitement →</span><span class="b gold lg">Organiser mes cérémonies →</span><span class="b gold hover">Survol</span><span class="b gold disabled">Désactivé</span></div>
+    <div class="lbl">Sombre</div><div class="bt-row"><span class="b primary sm">Se connecter</span><span class="b primary">Créer un compte</span><span class="b primary lg">Commencer maintenant</span><span class="b primary hover">Survol</span></div>
+    <div class="lbl">Secondaire</div><div class="bt-row"><span class="b secondary sm">Annuler</span><span class="b secondary">Voir la démo</span><span class="b secondary"><span class="ic">W</span>Parler sur WhatsApp</span></div>
+    <div class="lbl">Discret</div><div class="bt-row"><span class="b ghost">En savoir plus →</span><span class="b ghost sm">Modifier</span></div>
+    <div class="lbl">Avec icône</div><div class="bt-row"><span class="b gold"><span class="ic">+</span>Nouvelle cérémonie</span><span class="b primary"><span class="ic">₣</span>Envoyer le lien MoMo</span></div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -30,3 +30,21 @@ Elles servent d'inspiration pour la mise en page. Le numéro dans le nom du fich
 - Les textes entre crochets `[...]` sont des emplacements : ne rien inventer (témoignages, chiffres, prix définitifs).
 - Les noms de familles et montants dans la maquette du téléphone sont des exemples fictifs de démonstration.
 - Version mobile : les colonnes passent les unes sous les autres, l'offre Pro s'affiche en premier.
+
+---
+
+## Sections et composants « de style »
+
+Ces images ne sont **pas** des captures des sites cités : ce sont des sections originales dessinées **dans l'esprit** de ces sites, avec le contenu de Lokafête. Source : `styles.html`.
+
+| Fichier | Section de la page | À reprendre |
+|---|---|---|
+| `sections/solution-descript.png` | Ta solution (section 5) | Rangées alternées texte / visuel produit, numéro + étiquette au-dessus du titre, visuels sur fonds pastel dégradés avec une carte d'interface (devis, calendrier, paiements) |
+| `sections/faq-whoop.png` | FAQ (section 13) | Fond noir, titre géant en majuscules sur 2 couleurs à gauche, questions en majuscules séparées par des filets à droite, boutons ronds « + » / « – » dorés |
+| `sections/cta-linear.png` | CTA final (section 15) | Fond très sombre, halo doré en haut, grille discrète, titre centré en dégradé blanc → beige, bouton doré + bouton secondaire translucide |
+| `sections/wall-of-love.png` | Mur de l'Amour (section 14) | Étiquette « ♥ Mur de l'Amour », mosaïque 3 colonnes, cartes avec avatar, métier, ville, badge de la source (WhatsApp, Facebook, Instagram), photos de réalisations |
+| `sections/footer-tally.png` | Pied de page (section 16) | Logo + phrase + « Fait avec ♥ à Cotonou » à gauche, 4 colonnes de liens, ligne du bas avec copyright et icônes sociales |
+| `composants/accordion-cal.png` | Composant accordéon (FAQ) | Conteneur blanc bordé et arrondi, séparateurs fins, chevron qui pivote, question ouverte sur fond légèrement grisé |
+| `composants/button-cal.png` | Tous les boutons | Variantes : principal doré, sombre, secondaire bordé, discret, avec icône ; 3 tailles ; états survol et désactivé |
+
+Les étoiles et badges de source du Mur de l'Amour ne doivent apparaître qu'avec de vrais avis.
