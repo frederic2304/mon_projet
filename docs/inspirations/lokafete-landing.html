@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lokafête — inspiration visuelle</title>
+<style>
+  :root {
+    --bg: #faf8f3; --card: #ffffff; --fg: #1a1a1a; --muted: #6b6457;
+    --primary: #c1a26a; --primary-dark: #a6874f; --primary-fg: #1a1a1a;
+    --secondary: #ece6d8; --border: #e6dfcf; --rose: #f8e3df; --rose-fg: #8a3b2e;
+    --green: #e3f1e6; --green-fg: #24603a; --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: Inter, "Helvetica Neue", Arial, sans-serif; line-height: 1.5; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 72px 0; }
+  h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
+  h2 { font-size: 36px; text-align: center; margin-bottom: 12px; }
+  .lead { text-align: center; color: var(--muted); font-size: 18px; max-width: 640px; margin: 0 auto 40px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--primary-fg); font-weight: 700; border-radius: 12px; padding: 14px 26px; font-size: 16px; border: none; box-shadow: 0 6px 18px rgba(166,135,79,.28); }
+  .btn.ghost { background: transparent; box-shadow: none; border: 1.5px solid var(--border); }
+  .btn.sm { padding: 9px 16px; font-size: 14px; border-radius: 10px; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; color: var(--primary-dark); background: #f3ecdc; border: 1px solid #e6d8b8; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(250,248,243,.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-weight: 800; font-size: 22px; display: flex; align-items: center; gap: 8px; }
+  .logo span { width: 30px; height: 30px; border-radius: 9px; background: var(--primary); display: inline-flex; align-items: center; justify-content: center; font-size: 16px; }
+  .links { display: flex; gap: 28px; color: var(--muted); font-size: 15px; }
+
+  /* Hero */
+  .hero { padding: 64px 0 80px; background: radial-gradient(1000px 420px at 70% 0%, #f1e7cf 0%, transparent 70%); }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: 54px; margin-bottom: 18px; }
+  .hero h1 em { font-style: normal; color: var(--primary-dark); }
+  .hero p.sub { font-size: 19px; color: var(--muted); margin-bottom: 24px; max-width: 520px; }
+  .checks { list-style: none; display: grid; gap: 10px; margin-bottom: 30px; font-weight: 600; }
+  .checks li::before { content: "✓"; display: inline-flex; width: 22px; height: 22px; border-radius: 50%; background: var(--primary); color: var(--primary-fg); font-size: 13px; align-items: center; justify-content: center; margin-right: 10px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .social { display: flex; align-items: center; gap: 12px; margin-top: 28px; font-size: 14px; color: var(--muted); }
+  .avatars { display: flex; }
+  .avatars i { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--bg); margin-left: -10px; background: linear-gradient(135deg, #d9c6a0, #a6874f); }
+  .avatars i:first-child { margin-left: 0; }
+
+  /* Phone */
+  .phone { width: 300px; height: 600px; margin: 0 auto; border-radius: 42px; background: #1a1a1a; padding: 12px; box-shadow: 0 30px 60px rgba(60,45,20,.25); position: relative; }
+  .screen { background: var(--bg); border-radius: 32px; height: 100%; overflow: hidden; padding: 22px 16px; font-size: 12px; }
+  .screen .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .screen h4 { font-size: 17px; }
+  .pill { background: var(--secondary); border-radius: 999px; padding: 3px 9px; font-size: 11px; font-weight: 600; }
+  .days { display: flex; gap: 6px; margin-bottom: 14px; }
+  .days div { flex: 1; text-align: center; padding: 7px 0; border-radius: 10px; background: var(--card); border: 1px solid var(--border); font-weight: 600; }
+  .days div.on { background: var(--primary); border-color: var(--primary); }
+  .days small { display: block; font-weight: 400; color: var(--muted); font-size: 10px; }
+  .days div.on small { color: var(--fg); }
+  .ev { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 11px 12px; margin-bottom: 10px; }
+  .ev b { display: block; font-size: 13px; }
+  .ev .row { display: flex; justify-content: space-between; color: var(--muted); margin-top: 4px; }
+  .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+  .tag.paid { background: var(--green); color: var(--green-fg); }
+  .tag.due { background: var(--rose); color: var(--rose-fg); }
+  .momo { margin-top: 12px; background: #fff7df; border: 1px solid #f0dca6; border-radius: 14px; padding: 12px; }
+  .momo b { font-size: 13px; }
+
+  /* Métiers */
+  .trades { padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--card); }
+  .trades .wrap { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .trades p { color: var(--muted); font-size: 14px; margin-right: 8px; }
+  .chip { border: 1px solid var(--border); background: var(--bg); padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 14px; }
+
+  /* Problème */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .col { border-radius: var(--radius); padding: 28px; }
+  .col h3 { font-size: 20px; margin-bottom: 16px; }
+  .col ul { list-style: none; display: grid; gap: 14px; }
+  .col li { display: flex; gap: 12px; font-size: 16px; }
+  .col.bad { background: var(--rose); } .col.bad h3, .col.bad li b { color: var(--rose-fg); }
+  .col.good { background: var(--green); } .col.good h3, .col.good li b { color: var(--green-fg); }
+  .col li span { flex: none; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; background: rgba(255,255,255,.7); }
+
+  /* Témoignage */
+  .testi { padding: 48px 0; }
+  .quote { max-width: 720px; margin: 0 auto; text-align: center; border-top: 2px dashed var(--border); border-bottom: 2px dashed var(--border); padding: 36px 0; }
+  .quote p { font-size: 22px; font-weight: 600; margin-bottom: 18px; }
+  .who { display: inline-flex; gap: 12px; align-items: center; text-align: left; font-size: 14px; color: var(--muted); }
+  .who i { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #d9c6a0, #a6874f); }
+  .who b { color: var(--fg); display: block; }
+
+  /* Étapes */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+  .step .num { width: 38px; height: 38px; border-radius: 12px; background: var(--primary); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 16px; }
+  .step .ill { height: 120px; border-radius: 12px; background: var(--secondary); margin-bottom: 18px; display: flex; align-items: center; justify-content: center; font-size: 44px; }
+  .step h3 { font-size: 19px; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: 15px; }
+  .center { text-align: center; }
+  .objection { margin-top: 12px; color: var(--muted); font-size: 15px; }
+
+  /* Vidéo */
+  .video { max-width: 820px; margin: 0 auto; aspect-ratio: 16/9; border-radius: 20px; background: linear-gradient(135deg, #2a251c, #4a3f2c); display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 24px 50px rgba(60,45,20,.25); }
+  .play { width: 84px; height: 84px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 30px; padding-left: 6px; }
+  .video small { position: absolute; bottom: 18px; left: 22px; color: #eadfc6; font-size: 14px; }
+
+  /* Storytelling */
+  .story { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: center; }
+  .photo { aspect-ratio: 4/5; border-radius: 20px; background: var(--secondary); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 14px; border: 1px dashed #cfc3a6; }
+  .story h2 { text-align: left; }
+  .story p { color: var(--muted); font-size: 17px; margin-bottom: 14px; }
+  .story .sign { font-weight: 700; color: var(--fg); }
+
+  /* Tarifs */
+  .plans { display: grid; grid-template-columns: 1fr 1.08fr; gap: 24px; max-width: 820px; margin: 0 auto; align-items: end; }
+  .plan { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px; }
+  .plan.hl { border: 2px solid var(--primary); box-shadow: 0 20px 45px rgba(166,135,79,.22); padding: 38px 30px; position: relative; }
+  .plan.hl .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--fg); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 999px; white-space: nowrap; }
+  .plan h3 { font-size: 20px; }
+  .plan .for { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+  .price s { color: var(--muted); font-size: 16px; }
+  .price b { font-size: 38px; display: block; letter-spacing: -0.02em; }
+  .price small { color: var(--muted); }
+  .plan ul { list-style: none; margin: 20px 0 26px; display: grid; gap: 10px; font-size: 15px; }
+  .plan li::before { content: "✓"; color: var(--primary-dark); font-weight: 800; margin-right: 10px; }
+  .plan .btn { width: 100%; justify-content: center; }
+  .note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 26px; }
+
+  /* FAQ */
+  .faq { max-width: 760px; margin: 0 auto; }
+  .q { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin-bottom: 12px; }
+  .q summary { list-style: none; display: flex; justify-content: space-between; font-weight: 700; font-size: 16px; }
+  .q summary::after { content: "+"; color: var(--primary-dark); font-size: 22px; line-height: 1; }
+  .q.open summary::after { content: "–"; }
+  .q p { color: var(--muted); margin-top: 10px; font-size: 15px; }
+
+  /* Mur */
+  .wall { columns: 3; column-gap: 18px; }
+  .card { break-inside: avoid; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 18px; }
+  .card .who { margin-top: 14px; }
+  .card p { font-size: 15px; }
+  .card.ph { color: var(--muted); border-style: dashed; }
+  .card .img { height: 150px; border-radius: 10px; background: var(--secondary); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+
+  /* CTA final */
+  .final { background: var(--fg); color: #fff; border-radius: 28px; padding: 56px 40px; text-align: center; }
+  .final h2 { color: #fff; }
+  .final p { color: #cfc7b6; margin-bottom: 28px; font-size: 18px; }
+  .final .wa { display: block; margin-top: 16px; color: #cfc7b6; font-size: 14px; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--border); padding: 28px 0; margin-top: 72px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 14px; gap: 16px; flex-wrap: wrap; }
+  footer .soc { display: flex; gap: 10px; }
+  footer .soc span { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; color: var(--fg); font-weight: 700; }
+
+  /* Mobile */
+  @media (max-width: 760px) {
+    section { padding: 52px 0; }
+    .links, nav .ghost { display: none; }
+    .hero .wrap, .compare, .steps, .story, .plans { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 36px; }
+    .hero p.sub { font-size: 17px; }
+    h2 { font-size: 28px; }
+    .phone { transform: scale(.9); margin-top: -10px; }
+    .wall { columns: 1; }
+    .plan.hl { order: -1; }
+    .final { padding: 40px 22px; border-radius: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="s01-navigation">
+  <div class="wrap">
+    <div class="logo"><span>✦</span>Lokafête</div>
+    <div class="links"><span>Fonctionnalités</span><span>Témoignages</span><span>Tarifs</span><span>FAQ</span></div>
+    <button class="btn sm">Essai gratuit</button>
+  </div>
+</nav>
+
+<section class="hero" id="s02-hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Pour les décorateurs, loueurs et traiteurs du Bénin</span>
+      <h1>Organisez plus de cérémonies, <em>sans stress et sans impayés.</em></h1>
+      <p class="sub">Réservations, devis, matériel et acomptes MoMo : tout votre travail d'événementiel dans votre téléphone.</p>
+      <ul class="checks">
+        <li>Plus de double réservation</li>
+        <li>Devis prêts en 2 minutes</li>
+        <li>Acomptes et soldes payés par MoMo</li>
+      </ul>
+      <div class="cta-row">
+        <button class="btn">Essayer gratuitement 30 jours →</button>
+        <button class="btn ghost">Voir la démo</button>
+      </div>
+      <div class="social"><div class="avatars"><i></i><i></i><i></i><i></i><i></i></div><span>Rejoignez les premiers prestataires à tester Lokafête</span></div>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="top"><h4>Mon planning</h4><span class="pill">Octobre</span></div>
+      <div class="days">
+        <div>Ven<small>10</small></div><div class="on">Sam<small>11</small></div><div>Dim<small>12</small></div><div>Lun<small>13</small></div>
+      </div>
+      <div class="ev"><b>Mariage — famille A.</b><div class="row"><span>Décoration blanc et or · 300 invités</span></div><div class="row"><span>Cotonou, 10 h</span><span class="tag paid">Avance reçue</span></div></div>
+      <div class="ev"><b>Funérailles — famille K.</b><div class="row"><span>200 chaises · 4 bâches</span></div><div class="row"><span>Abomey-Calavi, 7 h</span><span class="tag due">Solde à recevoir</span></div></div>
+      <div class="ev"><b>Baptême — famille D.</b><div class="row"><span>Traiteur · 80 invités</span></div><div class="row"><span>Porto-Novo, 12 h</span><span class="tag paid">Payé</span></div></div>
+      <div class="momo"><b>Paiement MoMo reçu</b><div class="row" style="display:flex;justify-content:space-between;color:var(--muted);margin-top:4px"><span>Avance mariage famille A.</span><b style="color:var(--fg)">150 000 F</b></div></div>
+    </div></div>
+  </div>
+</section>
+
+<div class="trades" id="s02b-metiers">
+  <div class="wrap">
+    <p>Pensé pour tous les métiers des cérémonies :</p>
+    <span class="chip">Décorateurs</span><span class="chip">Loueurs de matériel</span><span class="chip">Traiteurs</span><span class="chip">Sonorisation</span><span class="chip">Photographes</span><span class="chip">Organisateurs</span>
+  </div>
+</div>
+
+<section id="s03-probleme">
+  <div class="wrap">
+    <h2>Le cahier ne suffit plus</h2>
+    <p class="lead">Vous êtes doué pour faire de belles cérémonies. Mais la gestion vous fait perdre du temps et de l'argent.</p>
+    <div class="compare">
+      <div class="col bad"><h3>Sans Lokafête</h3><ul>
+        <li><span>✕</span><div><b>Doubles réservations</b> découvertes le samedi matin</div></li>
+        <li><span>✕</span><div><b>Devis faits à la main</b>, avec des oublis et des erreurs</div></li>
+        <li><span>✕</span><div><b>Soldes jamais payés</b> une fois la cérémonie passée</div></li>
+        <li><span>✕</span><div><b>Tout dans le cahier</b>, qui peut se perdre</div></li>
+        <li><span>✕</span><div><b>Aucune idée</b> de ce que vous gagnez vraiment</div></li>
+      </ul></div>
+      <div class="col good"><h3>Avec Lokafête</h3><ul>
+        <li><span>✓</span><div><b>Votre planning</b> visible en 2 secondes</div></li>
+        <li><span>✓</span><div><b>Un devis pro en 2 minutes</b>, envoyé sur WhatsApp</div></li>
+        <li><span>✓</span><div><b>Avance et solde par MoMo</b>, rappels automatiques</div></li>
+        <li><span>✓</span><div><b>Tout dans votre téléphone</b>, sauvegardé en ligne</div></li>
+        <li><span>✓</span><div><b>Votre bénéfice</b> par cérémonie et par mois</div></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<div class="testi" id="s04-temoignage">
+  <div class="wrap"><div class="quote">
+    <p>« [Témoignage à recueillir auprès d'un client pilote] »</p>
+    <div class="who"><i></i><div><b>[Prénom N.]</b>[Métier], [Ville]</div></div>
+  </div></div>
+</div>
+
+<section id="s05-solution">
+  <div class="wrap">
+    <h2>Simple comme envoyer un message</h2>
+    <p class="lead">Trois étapes pour passer du cahier à votre téléphone.</p>
+    <div class="steps">
+      <div class="step"><div class="ill">📋</div><div class="num">1</div><h3>Créez votre catalogue</h3><p>Vos prestations et votre matériel avec leurs prix, en quelques minutes.</p></div>
+      <div class="step"><div class="ill">📅</div><div class="num">2</div><h3>Enregistrez une cérémonie</h3><p>Lokafête vérifie vos disponibilités et envoie le devis au client sur WhatsApp.</p></div>
+      <div class="step"><div class="ill">💰</div><div class="num">3</div><h3>Encaissez et organisez</h3><p>L'avance et le solde arrivent par MoMo, votre équipe reçoit son planning.</p></div>
+    </div>
+    <div class="center"><button class="btn">Organiser mes cérémonies sans stress →</button><p class="objection">✓ Aucune compétence en informatique requise</p></div>
+  </div>
+</section>
+
+<section id="s07-video" style="padding-top:24px">
+  <div class="wrap">
+    <h2>Voyez Lokafête en action</h2>
+    <p class="lead">3 minutes pour découvrir comment gérer une cérémonie de A à Z.</p>
+    <div class="video"><div class="play">▶</div><small>Démo · 3 min</small></div>
+  </div>
+</section>
+
+<section id="s09-storytelling">
+  <div class="wrap story">
+    <div class="photo">[Photo du fondateur]</div>
+    <div>
+      <span class="eyebrow">Notre histoire</span>
+      <h2>Pourquoi j'ai créé Lokafête</h2>
+      <p>[À écrire par Frédéric : ce qu'il a vu chez les prestataires de cérémonies autour de lui.]</p>
+      <p>[Le déclic : le jour où il a compris qu'un outil simple pouvait changer leur quotidien.]</p>
+      <p class="sign">— Frédéric, fondateur de Lokafête</p>
+    </div>
+  </div>
+</section>
+
+<section id="s11-tarifs" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Offre membre fondateur · 50 places</span></div>
+    <h2>Des week-ends de cérémonies sans stress</h2>
+    <p class="lead">Payez par MoMo chaque mois. Sans engagement.</p>
+    <div class="plans">
+      <div class="plan"><h3>Essentiel</h3><p class="for">Pour le prestataire seul</p>
+        <div class="price"><s>10 000 F</s><b>[7 500 F]</b><small>par mois</small></div>
+        <ul><li>Planning et réservations</li><li>Devis et factures PDF</li><li>Paiements MoMo</li><li>Rappels WhatsApp</li></ul>
+        <button class="btn ghost">Commencer</button></div>
+      <div class="plan hl"><span class="badge">Le plus choisi</span><h3>Pro</h3><p class="for">Pour les équipes et les prestataires multi-métiers</p>
+        <div class="price"><s>25 000 F</s><b>[17 500 F]</b><small>par mois</small></div>
+        <ul><li>Tout l'offre Essentiel</li><li>Stock de matériel et bons de sortie</li><li>Équipe et affectations</li><li>Dépenses et bénéfice par cérémonie</li><li>Portfolio partageable</li><li>Support prioritaire sur WhatsApp</li></ul>
+        <button class="btn">Essayer gratuitement 30 jours</button></div>
+    </div>
+    <p class="note">Prix indicatifs, à valider. Essai gratuit de 30 jours, sans engagement.</p>
+  </div>
+</section>
+
+<section id="s13-faq">
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+    <p class="lead">Une autre question ? Écrivez-nous sur WhatsApp.</p>
+    <div class="faq">
+      <div class="q open"><div><details open><summary>Est-ce que ça marche sur un téléphone Android simple ?</summary></details></div><p>Oui. Lokafête est léger et fonctionne même avec une connexion lente.</p></div>
+      <div class="q"><summary>Je fais plusieurs métiers, puis-je tout gérer au même endroit ?</summary></div>
+      <div class="q"><summary>Comment mes clients paient-ils par MoMo ?</summary></div>
+      <div class="q"><summary>Puis-je ajouter les membres de mon équipe ?</summary></div>
+      <div class="q"><summary>Puis-je essayer avant de payer ?</summary></div>
+    </div>
+  </div>
+</section>
+
+<section id="s14-mur-amour" style="padding-top:24px">
+  <div class="wrap">
+    <h2>Ils organisent leurs cérémonies avec Lokafête</h2>
+    <p class="lead">Les retours de nos clients pilotes.</p>
+    <div class="wall">
+      <div class="card ph"><div class="img">[Photo d'une décoration réalisée]</div><p>« [Témoignage à recueillir] »</p><div class="who"><i></i><div><b>[Décoratrice]</b>Cotonou</div></div></div>
+      <div class="card ph"><p>« [Témoignage à recueillir] »</p><div class="who"><i></i><div><b>[Loueur]</b>Abomey-Calavi</div></div></div>
+      <div class="card ph"><p>« [Capture d'un message WhatsApp de client, avec accord] »</p><div class="who"><i></i><div><b>[Traiteur]</b>Porto-Novo</div></div></div>
+      <div class="card ph"><div class="img">[Photo d'une installation]</div><p>« [Témoignage à recueillir] »</p><div class="who"><i></i><div><b>[Organisatrice]</b>Cotonou</div></div></div>
+      <div class="card ph"><p>« [Témoignage à recueillir] »</p><div class="who"><i></i><div><b>[Sonorisation]</b>Ouidah</div></div></div>
+      <div class="card ph"><p>« [Témoignage à recueillir] »</p><div class="who"><i></i><div><b>[Photographe]</b>Cotonou</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="s15-cta-final" style="padding:0">
+  <div class="wrap"><div class="final">
+    <h2>Votre prochaine cérémonie mérite mieux qu'un cahier</h2>
+    <p>Essayez Lokafête gratuitement pendant 30 jours.</p>
+    <button class="btn">Organiser mes cérémonies sans stress →</button>
+    <span class="wa">Une question ? Écrivez-nous sur WhatsApp</span>
+  </div></div>
+</section>
+
+<footer id="s16-footer">
+  <div class="wrap">
+    <div class="logo" style="font-size:18px"><span>✦</span>Lokafête</div>
+    <span>Tarifs · FAQ · Mentions légales · Confidentialité</span>
+    <div class="soc"><span>f</span><span>◎</span><span>♪</span><span>W</span></div>
+  </div>
+</footer>
+</body>
+</html>
