@@ -22,3 +22,20 @@ Un chapiteau de cérémonie (toit, lambrequin festonné, deux mâts) avec une é
 - Copier `favicon.ico` vers `app/favicon.ico` (remplace celui de Next.js), `favicon.svg` vers `app/icon.svg` et `icon-180.png` vers `app/apple-icon.png` : Next.js les utilise automatiquement.
 - Utiliser `icon.svg` à côté du mot « Lokafête » dans la barre de navigation et le pied de page, à la place du symbole ✦ des maquettes.
 - Couleurs : doré `#c1a26a` (dégradé `#d4b77f` → `#a6874f`), noir `#1a1a1a`, étincelle `#f3e3bd`.
+
+## Image de partage (Open Graph)
+
+`opengraph-image.png` (1200 × 630 px) s'affiche quand on partage le lien du site sur WhatsApp, Facebook, LinkedIn ou X. `twitter-image.png` est la même image. Source : `og.html`.
+
+Pour Next.js :
+- copier `opengraph-image.png` vers `app/opengraph-image.png` et `twitter-image.png` vers `app/twitter-image.png` ;
+- ajouter dans `app/layout.tsx` :
+
+```ts
+export const metadata = {
+  metadataBase: new URL("https://lokafete.com"),
+  title: "Lokafête — Gérez vos cérémonies sans stress",
+  description: "Réservations, devis, matériel et acomptes MoMo pour les décorateurs, loueurs et traiteurs du Bénin.",
+  openGraph: { locale: "fr_BJ", siteName: "Lokafête", type: "website" },
+};
+```
