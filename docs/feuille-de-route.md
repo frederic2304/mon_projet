@@ -59,6 +59,25 @@ Objectif : un décorateur gère une cérémonie de la demande au bilan, sans cah
 - [ ] **Liste d'achats** de fournitures (fleurs, ballons, tissus), reliée aux dépenses.
 - [ ] Envoi du planning à chaque membre par WhatsApp.
 
+### 7 bis. Rôles et permissions (décision validée)
+
+**Les membres de l'équipe ne voient aucun montant.** Seuls le propriétaire et les admins voient les prix, devis, paiements, dépenses, bénéfices et l'abonnement.
+
+| Rôle | Accès |
+|---|---|
+| Propriétaire | Tout, y compris l'équipe et l'abonnement |
+| Admin | Tout, sauf supprimer le propriétaire |
+| Membre | Ses cérémonies (dates, lieu, thème, couleurs, planche d'inspiration), ses affectations, la checklist, les bons de sortie et de retour, les photos. **Aucun montant.** |
+| Journalier (sans compte) | Pas d'accès à l'application, planning reçu par WhatsApp |
+| Client du prestataire | Pas de compte : page de partage du devis uniquement |
+
+**Règles techniques (à appliquer dans la base, pas seulement dans l'interface)** :
+- [ ] `devis`, `lignes_devis`, `paiements`, `depenses`, `abonnements`, `packs`, `articles_pack` : lecture et écriture réservées aux rôles propriétaire et admin (nouvelle fonction `est_admin` dans les règles RLS).
+- [ ] `articles` : les membres passent par une vue sans les colonnes de prix (`prix_unitaire`, `caution_unitaire`) ; la table elle-même est réservée aux admins. La RLS filtre les lignes, pas les colonnes : une simple condition dans l'interface ne suffit pas.
+- [ ] Vues de calcul (`totaux_devis`, `valeurs_packs`) : réservées aux admins par la même logique.
+- [ ] Interface : masquer les menus Devis, Paiements, Bilan et Abonnement pour les membres.
+- [ ] Test obligatoire : un compte membre ne doit obtenir aucun montant, même en interrogeant Supabase directement.
+
 ### 8. Matériel : sortie et retour
 - [ ] Bon de sortie (ce qui part chez le client).
 - [ ] Bon de retour : bon, abîmé, perdu, avec retenue sur la caution.
