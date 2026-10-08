@@ -11,7 +11,7 @@ function creerQuestionnaire() {
   form.setDescription(
     'Bonjour et merci de prendre 5 minutes pour ce questionnaire.\n\n' +
     "Je m'appelle Frédéric. Je fais une petite étude sur la façon dont les décorateurs, " +
-    'loueurs de matériel et traiteurs du Bénin organisent leurs cérémonies. ' +
+    'loueurs de matériel, traiteurs et organisateurs d\'événements du Bénin organisent leurs cérémonies. ' +
     'Je ne vends rien : je veux comprendre votre travail.\n\n' +
     "Il n'y a pas de bonne ou de mauvaise réponse. Vos réponses restent confidentielles " +
     "et ne servent qu'à cette étude. Votre numéro WhatsApp, à la fin, est facultatif."
